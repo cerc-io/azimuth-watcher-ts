@@ -20,6 +20,11 @@ type ResultBoolean {
   proof: Proof
 }
 
+type ResultBooleanArray {
+  value: [Boolean!]!
+  proof: Proof
+}
+
 type ResultString {
   value: String!
   proof: Proof
@@ -96,6 +101,11 @@ type ResultState {
   data: String!
 }
 
+type ResultIntArray {
+  value: [Int!]!
+  proof: Proof
+}
+
 type Query {
   events(blockHash: String!, contractAddress: String!, name: String): [ResultEvent!]
   eventsInRange(fromBlockNumber: Int!, toBlockNumber: Int!): [ResultEvent!]
@@ -162,6 +172,10 @@ type Query {
   getSyncStatus: SyncStatus
   getStateByCID(cid: String!): ResultState
   getState(blockHash: String!, contractAddress: String!, kind: String): ResultState
+  getBatches(blockHash: String!, contractAddress: String!, _participant: String!):  ResultIntArray!
+  getWithdrawn(blockHash: String!, contractAddress: String!, _participant: String!): ResultIntArray!
+  getForfeited(blockHash: String!, contractAddress: String!, _participant: String!): ResultBooleanArray!
+  getRemainingStars(blockHash: String!, contractAddress: String!, _participant: String!): ResultIntArray!
 }
 
 type Mutation {

@@ -1802,6 +1802,122 @@ export class Indexer implements IndexerInterface {
     return result;
   }
 
+  async getBatches (blockHash: string, contractAddress: string, _participant: string): Promise<ValueResult> {
+    // const entity = await this._db.getGetBatches({ blockHash, contractAddress, _participant });
+    // if (entity) {
+    //   log('getBatches: db hit.');
+
+    //   return {
+    //     value: entity.value,
+    //     proof: JSON.parse(entity.proof)
+    //   };
+    // }
+
+    log('getBatches: db miss, fetching from upstream server');
+
+    const { block: { number } } = await this._ethClient.getBlockByHash(blockHash);
+    const blockNumber = ethers.BigNumber.from(number).toNumber();
+
+    const abi = this._abiMap.get(KIND_CONDITIONALSTARRELEASE);
+    assert(abi);
+
+    const contract = new ethers.Contract(contractAddress, abi, this._ethProvider);
+    const value = await contract.getBatches(_participant, { blockTag: blockHash });
+
+    const result: ValueResult = { value };
+
+    // await this._db.saveGetBatches({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+
+    return result;
+  }
+
+  async getWithdrawn (blockHash: string, contractAddress: string, _participant: string): Promise<ValueResult> {
+    // const entity = await this._db.getGetWithdrawn({ blockHash, contractAddress, _participant });
+    // if (entity) {
+    //   log('getWithdrawn: db hit.');
+
+    //   return {
+    //     value: entity.value,
+    //     proof: JSON.parse(entity.proof)
+    //   };
+    // }
+
+    log('getWithdrawn: db miss, fetching from upstream server');
+
+    const { block: { number } } = await this._ethClient.getBlockByHash(blockHash);
+    const blockNumber = ethers.BigNumber.from(number).toNumber();
+
+    const abi = this._abiMap.get(KIND_CONDITIONALSTARRELEASE);
+    assert(abi);
+
+    const contract = new ethers.Contract(contractAddress, abi, this._ethProvider);
+    const value = await contract.getWithdrawn(_participant, { blockTag: blockHash });
+
+    const result: ValueResult = { value };
+
+    // await this._db.saveGetWithdrawn({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+
+    return result;
+  }
+
+  async getRemainingStars (blockHash: string, contractAddress: string, _participant: string): Promise<ValueResult> {
+    // const entity = await this._db.getGetRemainingStars({ blockHash, contractAddress, _participant });
+    // if (entity) {
+    //   log('getRemainingStars: db hit.');
+
+    //   return {
+    //     value: entity.value,
+    //     proof: JSON.parse(entity.proof)
+    //   };
+    // }
+
+    log('getRemainingStars: db miss, fetching from upstream server');
+
+    const { block: { number } } = await this._ethClient.getBlockByHash(blockHash);
+    const blockNumber = ethers.BigNumber.from(number).toNumber();
+
+    const abi = this._abiMap.get(KIND_CONDITIONALSTARRELEASE);
+    assert(abi);
+
+    const contract = new ethers.Contract(contractAddress, abi, this._ethProvider);
+    const value = await contract.getRemainingStars(_participant, { blockTag: blockHash });
+
+    const result: ValueResult = { value };
+
+    // await this._db.saveGetRemainingStars({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+
+    return result;
+  }
+
+  async getForfeited (blockHash: string, contractAddress: string, _participant: string): Promise<ValueResult> {
+    // const entity = await this._db.getgetForfeited({ blockHash, contractAddress, _participant });
+    // if (entity) {
+    //   log('getForfeited: db hit.');
+
+    //   return {
+    //     value: entity.value,
+    //     proof: JSON.parse(entity.proof)
+    //   };
+    // }
+
+    log('getForfeited: db miss, fetching from upstream server');
+
+    const { block: { number } } = await this._ethClient.getBlockByHash(blockHash);
+    const blockNumber = ethers.BigNumber.from(number).toNumber();
+
+    const abi = this._abiMap.get(KIND_CONDITIONALSTARRELEASE);
+    assert(abi);
+
+    const contract = new ethers.Contract(contractAddress, abi, this._ethProvider);
+    const value = await contract.getForfeited(_participant, { blockTag: blockHash });
+
+    const result: ValueResult = { value };
+
+    // await this._db.saveGetForfeited({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+
+    return result;
+  }
+
   async getWithdrawnFromBatch (blockHash: string, contractAddress: string, _participant: string, _batch: number): Promise<ValueResult> {
     const entity = await this._db.getGetWithdrawnFromBatch({ blockHash, contractAddress, _participant, _batch });
     if (entity) {

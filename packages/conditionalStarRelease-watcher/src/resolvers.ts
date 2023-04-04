@@ -69,6 +69,70 @@ export const createResolvers = async (indexerArg: IndexerInterface, eventWatcher
     },
 
     Query: {
+      getBatches: (
+        _: any,
+        { blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string },
+        __: any,
+        info: GraphQLResolveInfo
+      ): Promise<ValueResult> => {
+        log('getBatches', blockHash, contractAddress);
+        gqlTotalQueryCount.inc(1);
+        gqlQueryCount.labels('getBatches').inc(1);
+
+        // Set cache-control hints
+        // setGQLCacheHints(info, {}, gqlCacheConfig);
+
+        return indexer.getBatches(blockHash, contractAddress, _participant);
+      },
+
+      getWithdrawn: (
+        _: any,
+        { blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string },
+        __: any,
+        info: GraphQLResolveInfo
+      ): Promise<ValueResult> => {
+        log('getWithdrawn', blockHash, contractAddress);
+        gqlTotalQueryCount.inc(1);
+        gqlQueryCount.labels('getWithdrawn').inc(1);
+
+        // Set cache-control hints
+        // setGQLCacheHints(info, {}, gqlCacheConfig);
+
+        return indexer.getWithdrawn(blockHash, contractAddress, _participant);
+      },
+
+      getRemainingStars: (
+        _: any,
+        { blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string },
+        __: any,
+        info: GraphQLResolveInfo
+      ): Promise<ValueResult> => {
+        log('getRemainingStars', blockHash, contractAddress);
+        gqlTotalQueryCount.inc(1);
+        gqlQueryCount.labels('getRemainingStars').inc(1);
+
+        // Set cache-control hints
+        // setGQLCacheHints(info, {}, gqlCacheConfig);
+
+        return indexer.getRemainingStars(blockHash, contractAddress, _participant);
+      },
+
+      getForfeited: (
+        _: any,
+        { blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string },
+        __: any,
+        info: GraphQLResolveInfo
+      ): Promise<ValueResult> => {
+        log('getForfeited', blockHash, contractAddress);
+        gqlTotalQueryCount.inc(1);
+        gqlQueryCount.labels('getForfeited').inc(1);
+
+        // Set cache-control hints
+        // setGQLCacheHints(info, {}, gqlCacheConfig);
+
+        return indexer.getForfeited(blockHash, contractAddress, _participant);
+      },
+
       isActive: (
         _: any,
         { blockHash, contractAddress, _point }: { blockHash: string, contractAddress: string, _point: number },
