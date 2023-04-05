@@ -1803,15 +1803,15 @@ export class Indexer implements IndexerInterface {
   }
 
   async getBatches (blockHash: string, contractAddress: string, _participant: string): Promise<ValueResult> {
-    // const entity = await this._db.getGetBatches({ blockHash, contractAddress, _participant });
-    // if (entity) {
-    //   log('getBatches: db hit.');
+    const entity = await this._db.getGetBatches({ blockHash, contractAddress, _participant });
+    if (entity) {
+      log('getBatches: db hit.');
 
-    //   return {
-    //     value: entity.value,
-    //     proof: JSON.parse(entity.proof)
-    //   };
-    // }
+      return {
+        value: entity.value,
+        proof: JSON.parse(entity.proof)
+      };
+    }
 
     log('getBatches: db miss, fetching from upstream server');
 
@@ -1826,21 +1826,21 @@ export class Indexer implements IndexerInterface {
 
     const result: ValueResult = { value };
 
-    // await this._db.saveGetBatches({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+    await this._db.saveGetBatches({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
 
     return result;
   }
 
   async getWithdrawn (blockHash: string, contractAddress: string, _participant: string): Promise<ValueResult> {
-    // const entity = await this._db.getGetWithdrawn({ blockHash, contractAddress, _participant });
-    // if (entity) {
-    //   log('getWithdrawn: db hit.');
+    const entity = await this._db.getGetWithdrawn({ blockHash, contractAddress, _participant });
+    if (entity) {
+      log('getWithdrawn: db hit.');
 
-    //   return {
-    //     value: entity.value,
-    //     proof: JSON.parse(entity.proof)
-    //   };
-    // }
+      return {
+        value: entity.value,
+        proof: JSON.parse(entity.proof)
+      };
+    }
 
     log('getWithdrawn: db miss, fetching from upstream server');
 
@@ -1855,21 +1855,21 @@ export class Indexer implements IndexerInterface {
 
     const result: ValueResult = { value };
 
-    // await this._db.saveGetWithdrawn({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+    await this._db.saveGetWithdrawn({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
 
     return result;
   }
 
   async getRemainingStars (blockHash: string, contractAddress: string, _participant: string): Promise<ValueResult> {
-    // const entity = await this._db.getGetRemainingStars({ blockHash, contractAddress, _participant });
-    // if (entity) {
-    //   log('getRemainingStars: db hit.');
+    const entity = await this._db.getGetRemainingStars({ blockHash, contractAddress, _participant });
+    if (entity) {
+      log('getRemainingStars: db hit.');
 
-    //   return {
-    //     value: entity.value,
-    //     proof: JSON.parse(entity.proof)
-    //   };
-    // }
+      return {
+        value: entity.value,
+        proof: JSON.parse(entity.proof)
+      };
+    }
 
     log('getRemainingStars: db miss, fetching from upstream server');
 
@@ -1884,21 +1884,21 @@ export class Indexer implements IndexerInterface {
 
     const result: ValueResult = { value };
 
-    // await this._db.saveGetRemainingStars({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+    await this._db.saveGetRemainingStars({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
 
     return result;
   }
 
   async getForfeited (blockHash: string, contractAddress: string, _participant: string): Promise<ValueResult> {
-    // const entity = await this._db.getgetForfeited({ blockHash, contractAddress, _participant });
-    // if (entity) {
-    //   log('getForfeited: db hit.');
+    const entity = await this._db.getGetForfeited({ blockHash, contractAddress, _participant });
+    if (entity) {
+      log('getForfeited: db hit.');
 
-    //   return {
-    //     value: entity.value,
-    //     proof: JSON.parse(entity.proof)
-    //   };
-    // }
+      return {
+        value: entity.value,
+        proof: JSON.parse(entity.proof)
+      };
+    }
 
     log('getForfeited: db miss, fetching from upstream server');
 
@@ -1913,7 +1913,7 @@ export class Indexer implements IndexerInterface {
 
     const result: ValueResult = { value };
 
-    // await this._db.saveGetForfeited({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+    await this._db.saveGetForfeited({ blockHash, blockNumber, contractAddress, _participant, value: result.value, proof: JSONbigNative.stringify(result.proof) });
 
     return result;
   }

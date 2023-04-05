@@ -80,8 +80,12 @@ import { VerifyBalance } from './entity/VerifyBalance';
 import { GetBatch } from './entity/GetBatch';
 import { GetWithdrawnFromBatch } from './entity/GetWithdrawnFromBatch';
 import { HasForfeitedBatch } from './entity/HasForfeitedBatch';
+import { GetBatches } from './entity/GetBatches';
+import { GetWithdrawn } from './entity/GetWithdrawn';
+import { GetForfeited } from './entity/GetForfeited';
+import { GetRemainingStars } from './entity/GetRemainingStars';
 
-export const ENTITIES = [IsActive, GetKeys, GetKeyRevisionNumber, HasBeenLinked, IsLive, GetContinuityNumber, GetSpawnCount, HasSponsor, GetSponsor, IsSponsor, GetSponsoringCount, IsEscaping, GetEscapeRequest, IsRequestingEscapeTo, GetEscapeRequestsCount, GetOwner, IsOwner, GetOwnedPointCount, GetOwnedPointAtIndex, GetManagementProxy, IsManagementProxy, CanManage, GetManagerForCount, GetSpawnProxy, IsSpawnProxy, CanSpawnAs, GetSpawningForCount, GetVotingProxy, IsVotingProxy, CanVoteAs, GetVotingForCount, GetTransferProxy, IsTransferProxy, CanTransfer, GetTransferringForCount, IsOperator, GetUpgradeProposalCount, GetDocumentProposalCount, HasVotedOnUpgradePoll, HasVotedOnDocumentPoll, FindClaim, SupportsInterface, BalanceOf, OwnerOf, Exists, GetApproved, IsApprovedForAll, TotalSupply, TokenOfOwnerByIndex, TokenByIndex, Name, Symbol, TokenURI, GetSpawnLimit, CanEscapeTo, WithdrawLimit, VerifyBalance, GetBatch, GetWithdrawnFromBatch, HasForfeitedBatch];
+export const ENTITIES = [GetBatches, GetWithdrawn, GetForfeited, GetRemainingStars, IsActive, GetKeys, GetKeyRevisionNumber, HasBeenLinked, IsLive, GetContinuityNumber, GetSpawnCount, HasSponsor, GetSponsor, IsSponsor, GetSponsoringCount, IsEscaping, GetEscapeRequest, IsRequestingEscapeTo, GetEscapeRequestsCount, GetOwner, IsOwner, GetOwnedPointCount, GetOwnedPointAtIndex, GetManagementProxy, IsManagementProxy, CanManage, GetManagerForCount, GetSpawnProxy, IsSpawnProxy, CanSpawnAs, GetSpawningForCount, GetVotingProxy, IsVotingProxy, CanVoteAs, GetVotingForCount, GetTransferProxy, IsTransferProxy, CanTransfer, GetTransferringForCount, IsOperator, GetUpgradeProposalCount, GetDocumentProposalCount, HasVotedOnUpgradePoll, HasVotedOnDocumentPoll, FindClaim, SupportsInterface, BalanceOf, OwnerOf, Exists, GetApproved, IsApprovedForAll, TotalSupply, TokenOfOwnerByIndex, TokenByIndex, Name, Symbol, TokenURI, GetSpawnLimit, CanEscapeTo, WithdrawLimit, VerifyBalance, GetBatch, GetWithdrawnFromBatch, HasForfeitedBatch];
 
 export class Database implements DatabaseInterface {
   _config: ConnectionOptions;
@@ -655,6 +659,42 @@ export class Database implements DatabaseInterface {
       });
   }
 
+  async getGetForfeited ({ blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string }): Promise<GetForfeited | undefined> {
+    return this._conn.getRepository(GetForfeited)
+      .findOne({
+        blockHash,
+        contractAddress,
+        _participant
+      });
+  }
+
+  async getGetRemainingStars ({ blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string }): Promise<GetRemainingStars | undefined> {
+    return this._conn.getRepository(GetRemainingStars)
+      .findOne({
+        blockHash,
+        contractAddress,
+        _participant
+      });
+  }
+
+  async getGetBatches ({ blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string }): Promise<GetBatches | undefined> {
+    return this._conn.getRepository(GetBatches)
+      .findOne({
+        blockHash,
+        contractAddress,
+        _participant
+      });
+  }
+
+  async getGetWithdrawn ({ blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string }): Promise<GetWithdrawn | undefined> {
+    return this._conn.getRepository(GetWithdrawn)
+      .findOne({
+        blockHash,
+        contractAddress,
+        _participant
+      });
+  }
+
   async getGetWithdrawnFromBatch ({ blockHash, contractAddress, _participant, _batch }: { blockHash: string, contractAddress: string, _participant: string, _batch: number }): Promise<GetWithdrawnFromBatch | undefined> {
     return this._conn.getRepository(GetWithdrawnFromBatch)
       .findOne({
@@ -1024,6 +1064,30 @@ export class Database implements DatabaseInterface {
     return repo.save(entity);
   }
 
+  async saveGetBatches ({ blockHash, blockNumber, contractAddress, _participant, value, proof }: DeepPartial<GetBatches>): Promise<GetBatches> {
+    const repo = this._conn.getRepository(GetBatches);
+    const entity = repo.create({ blockHash, blockNumber, contractAddress, _participant, value, proof });
+    return repo.save(entity);
+  }
+
+  async saveGetForfeited ({ blockHash, blockNumber, contractAddress, _participant, value, proof }: DeepPartial<GetForfeited>): Promise<GetForfeited> {
+    const repo = this._conn.getRepository(GetForfeited);
+    const entity = repo.create({ blockHash, blockNumber, contractAddress, _participant, value, proof });
+    return repo.save(entity);
+  }
+
+  async saveGetRemainingStars ({ blockHash, blockNumber, contractAddress, _participant, value, proof }: DeepPartial<GetRemainingStars>): Promise<GetRemainingStars> {
+    const repo = this._conn.getRepository(GetRemainingStars);
+    const entity = repo.create({ blockHash, blockNumber, contractAddress, _participant, value, proof });
+    return repo.save(entity);
+  }
+
+  async saveGetWithdrawn ({ blockHash, blockNumber, contractAddress, _participant, value, proof }: DeepPartial<GetWithdrawn>): Promise<GetWithdrawn> {
+    const repo = this._conn.getRepository(GetWithdrawn);
+    const entity = repo.create({ blockHash, blockNumber, contractAddress, _participant, value, proof });
+    return repo.save(entity);
+  }
+
   async saveGetWithdrawnFromBatch ({ blockHash, blockNumber, contractAddress, _participant, _batch, value, proof }: DeepPartial<GetWithdrawnFromBatch>): Promise<GetWithdrawnFromBatch> {
     const repo = this._conn.getRepository(GetWithdrawnFromBatch);
     const entity = repo.create({ blockHash, blockNumber, contractAddress, _participant, _batch, value, proof });
@@ -1241,6 +1305,10 @@ export class Database implements DatabaseInterface {
   }
 
   _setPropColMaps (): void {
+    this._propColMaps.GetBatches = this._getPropertyColumnMapForEntity('GetBatches');
+    this._propColMaps.GetForfeited = this._getPropertyColumnMapForEntity('GetForfeited');
+    this._propColMaps.GetRemainingStars = this._getPropertyColumnMapForEntity('GetRemainingStars');
+    this._propColMaps.GetWithdrawn = this._getPropertyColumnMapForEntity('GetWithdrawn');
     this._propColMaps.IsActive = this._getPropertyColumnMapForEntity('IsActive');
     this._propColMaps.GetKeys = this._getPropertyColumnMapForEntity('GetKeys');
     this._propColMaps.GetKeyRevisionNumber = this._getPropertyColumnMapForEntity('GetKeyRevisionNumber');
