@@ -106,6 +106,18 @@ type ResultIntArray {
   proof: Proof
 }
 
+type ConditionsState {
+  conds: [String!]!
+  lives: [BigInt!]!
+  deads: [BigInt!]!
+  times: [BigInt!]!
+}
+
+type ResultConditionsState {
+  value: ConditionsState!
+  proof: Proof
+}
+
 type Query {
   events(blockHash: String!, contractAddress: String!, name: String): [ResultEvent!]
   eventsInRange(fromBlockNumber: Int!, toBlockNumber: Int!): [ResultEvent!]
@@ -176,6 +188,7 @@ type Query {
   getWithdrawn(blockHash: String!, contractAddress: String!, _participant: String!): ResultIntArray!
   getForfeited(blockHash: String!, contractAddress: String!, _participant: String!): ResultBooleanArray!
   getRemainingStars(blockHash: String!, contractAddress: String!, _participant: String!): ResultIntArray!
+  getConditionsState(blockHash: String!, contractAddress: String!): ResultConditionsState!
 }
 
 type Mutation {

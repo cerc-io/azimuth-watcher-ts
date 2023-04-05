@@ -69,6 +69,23 @@ export const createResolvers = async (indexerArg: IndexerInterface, eventWatcher
     },
 
     Query: {
+
+      getConditionsState: (
+        _: any,
+        { blockHash, contractAddress }: { blockHash: string, contractAddress: string },
+        __: any,
+        info: GraphQLResolveInfo
+      ): Promise<ValueResult> => {
+        log('getConditionsState', blockHash, contractAddress);
+        gqlTotalQueryCount.inc(1);
+        gqlQueryCount.labels('getConditionsState').inc(1);
+
+        // Set cache-control hints
+        // setGQLCacheHints(info, {}, gqlCacheConfig);
+
+        return indexer.getConditionsState(blockHash, contractAddress);
+      },
+
       getBatches: (
         _: any,
         { blockHash, contractAddress, _participant }: { blockHash: string, contractAddress: string, _participant: string },

@@ -1773,6 +1773,34 @@ export class Indexer implements IndexerInterface {
     return result;
   }
 
+  async getConditionsState (blockHash: string, contractAddress: string): Promise<ValueResult> {
+    // const entity = await this._db.getGetConditionsState({ blockHash, contractAddress });
+    // if (entity) {
+    //   log('getConditionsState: db hit.');
+
+    //   return {
+    //     value: entity.value,
+    //     proof: JSON.parse(entity.proof)
+    //   };
+    // }
+
+    log('getConditionsState: db miss, fetching from upstream server');
+
+    const { block: { number } } = await this._ethClient.getBlockByHash(blockHash);
+    const blockNumber = ethers.BigNumber.from(number).toNumber();
+
+    const abi = this._abiMap.get(KIND_CONDITIONALSTARRELEASE);
+    assert(abi);
+
+    const contract = new ethers.Contract(contractAddress, abi, this._ethProvider);
+    const value = await contract.getConditionsState({ blockTag: blockHash });
+    const result: ValueResult = { value };
+
+    // await this._db.saveGetConditionsState({ blockHash, blockNumber, contractAddress, value: result.value, proof: JSONbigNative.stringify(result.proof) });
+
+    return result;
+  }
+
   async getBatch (blockHash: string, contractAddress: string, _participant: string, _batch: number): Promise<ValueResult> {
     const entity = await this._db.getGetBatch({ blockHash, contractAddress, _participant, _batch });
     if (entity) {
