@@ -1,0 +1,8 @@
+query sponsoringIndexes($blockHash: String!, $contractAddress: String!, $key0: Int!, $key1: Int!){
+    sponsoringIndexes(blockHash: $blockHash, contractAddress: $contractAddress, key0: $key0, key1: $key1){
+        value
+        proof{
+            data
+        }
+    }
+}

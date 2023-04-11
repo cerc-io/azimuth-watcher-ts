@@ -1,0 +1,87 @@
+query eventsInRange($fromBlockNumber: Int!, $toBlockNumber: Int!){
+    eventsInRange(fromBlockNumber: $fromBlockNumber, toBlockNumber: $toBlockNumber){
+        block{
+            cid
+            hash
+            number
+            timestamp
+            parentHash
+        }
+        tx{
+            hash
+            index
+            from
+            to
+        }
+        contract
+        eventIndex
+        event{
+            ... on ActivatedEvent {
+                point
+            }
+            ... on BrokeContinuityEvent {
+                point
+                number
+            }
+            ... on ChangedDnsEvent {
+                primary
+                secondary
+                tertiary
+            }
+            ... on ChangedKeysEvent {
+                point
+                encryptionKey
+                authenticationKey
+                cryptoSuiteVersion
+                keyRevisionNumber
+            }
+            ... on ChangedManagementProxyEvent {
+                point
+                managementProxy
+            }
+            ... on ChangedSpawnProxyEvent {
+                point
+                spawnProxy
+            }
+            ... on ChangedTransferProxyEvent {
+                point
+                transferProxy
+            }
+            ... on ChangedVotingProxyEvent {
+                point
+                votingProxy
+            }
+            ... on EscapeAcceptedEvent {
+                point
+                sponsor
+            }
+            ... on EscapeCanceledEvent {
+                point
+                sponsor
+            }
+            ... on EscapeRequestedEvent {
+                point
+                sponsor
+            }
+            ... on LostSponsorEvent {
+                point
+                sponsor
+            }
+            ... on OwnerChangedEvent {
+                point
+                owner
+            }
+            ... on OwnershipTransferredEvent {
+                previousOwner
+                newOwner
+            }
+            ... on SpawnedEvent {
+                prefix
+                child
+            }
+        }
+        proof{
+            data
+        }
+    }
+}

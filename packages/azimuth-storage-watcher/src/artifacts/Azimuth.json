@@ -1,0 +1,2626 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        }
+      ],
+      "name": "Activated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "number",
+          "type": "uint32"
+        }
+      ],
+      "name": "BrokeContinuity",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "primary",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "secondary",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "tertiary",
+          "type": "string"
+        }
+      ],
+      "name": "ChangedDns",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "encryptionKey",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "authenticationKey",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "cryptoSuiteVersion",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "keyRevisionNumber",
+          "type": "uint32"
+        }
+      ],
+      "name": "ChangedKeys",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "managementProxy",
+          "type": "address"
+        }
+      ],
+      "name": "ChangedManagementProxy",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spawnProxy",
+          "type": "address"
+        }
+      ],
+      "name": "ChangedSpawnProxy",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "transferProxy",
+          "type": "address"
+        }
+      ],
+      "name": "ChangedTransferProxy",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "votingProxy",
+          "type": "address"
+        }
+      ],
+      "name": "ChangedVotingProxy",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "EscapeAccepted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "EscapeCanceled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "EscapeRequested",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "LostSponsor",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnerChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "prefix",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "child",
+          "type": "uint32"
+        }
+      ],
+      "name": "Spawned",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "activatePoint",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_who",
+          "type": "address"
+        }
+      ],
+      "name": "canManage",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_who",
+          "type": "address"
+        }
+      ],
+      "name": "canSpawnAs",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_who",
+          "type": "address"
+        }
+      ],
+      "name": "canTransfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_who",
+          "type": "address"
+        }
+      ],
+      "name": "canVoteAs",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "cancelEscape",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "dnsDomains",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "doEscape",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "escapeRequests",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "escapeRequestsIndexes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getContinuityNumber",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "continuityNumber",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getEscapeRequest",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "escape",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "getEscapeRequests",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "requests",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "getEscapeRequestsCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getKeyRevisionNumber",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "revision",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getKeys",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "crypt",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "auth",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "suite",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "revision",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getManagementProxy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "manager",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getManagerFor",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "mfor",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getManagerForCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_whose",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getOwnedPointAtIndex",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "point",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_whose",
+          "type": "address"
+        }
+      ],
+      "name": "getOwnedPointCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_whose",
+          "type": "address"
+        }
+      ],
+      "name": "getOwnedPoints",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "ownedPoints",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getPointSize",
+      "outputs": [
+        {
+          "internalType": "enum Azimuth.Size",
+          "name": "_size",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getPrefix",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "prefix",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getSpawnCount",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "spawnCount",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getSpawnProxy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "spawnProxy",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getSpawned",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "spawned",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getSpawningFor",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "sfor",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getSpawningForCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getSponsor",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "sponsor",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "getSponsoring",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "sponsees",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "getSponsoringCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getTransferProxy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "transferProxy",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getTransferringFor",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "tfor",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getTransferringForCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getVotingFor",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "vfor",
+          "type": "uint32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getVotingForCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "getVotingProxy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "voter",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "hasBeenLinked",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "hasSponsor",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "has",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "incrementContinuityNumber",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "isActive",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "equals",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "isEscaping",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "escaping",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "isLive",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "isManagementProxy",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_operator",
+          "type": "address"
+        }
+      ],
+      "name": "isOperator",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "isRequestingEscapeTo",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "equals",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "isSpawnProxy",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "isSponsor",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "isTransferProxy",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "isVotingProxy",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "result",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "loseSponsor",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "managerFor",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "managerForIndexes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "operators",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "pointOwnerIndexes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "points",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "encryptionKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "authenticationKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bool",
+          "name": "hasSponsor",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "active",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "escapeRequested",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint32",
+          "name": "sponsor",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "escapeRequestedTo",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "cryptoSuiteVersion",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "keyRevisionNumber",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "continuityNumber",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "pointsOwnedBy",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        }
+      ],
+      "name": "registerSpawned",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "rights",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "managementProxy",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spawnProxy",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "votingProxy",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "transferProxy",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_primary",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_secondary",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_tertiary",
+          "type": "string"
+        }
+      ],
+      "name": "setDnsDomains",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_sponsor",
+          "type": "uint32"
+        }
+      ],
+      "name": "setEscapeRequest",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_encryptionKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_authenticationKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_cryptoSuiteVersion",
+          "type": "uint32"
+        }
+      ],
+      "name": "setKeys",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "setManagementProxy",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "setOwner",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "setSpawnProxy",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "setTransferProxy",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_point",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "setVotingProxy",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "spawningFor",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "spawningForIndexes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "sponsoring",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "sponsoringIndexes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferringFor",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "transferringForIndexes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "votingFor",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "votingForIndexes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 30,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 276,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "points",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_struct(Point)261_storage)"
+      },
+      {
+        "astId": 280,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "rights",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint32,t_struct(Deed)272_storage)"
+      },
+      {
+        "astId": 286,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "operators",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_bool))"
+      },
+      {
+        "astId": 290,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "dnsDomains",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_array(t_string_storage)3_storage"
+      },
+      {
+        "astId": 295,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "sponsoring",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_uint32,t_array(t_uint32)dyn_storage)"
+      },
+      {
+        "astId": 301,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "sponsoringIndexes",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint32,t_uint256))"
+      },
+      {
+        "astId": 306,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "escapeRequests",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_mapping(t_uint32,t_array(t_uint32)dyn_storage)"
+      },
+      {
+        "astId": 312,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "escapeRequestsIndexes",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint32,t_uint256))"
+      },
+      {
+        "astId": 317,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "pointsOwnedBy",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_mapping(t_address,t_array(t_uint32)dyn_storage)"
+      },
+      {
+        "astId": 323,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "pointOwnerIndexes",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_uint256))"
+      },
+      {
+        "astId": 328,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "managerFor",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_mapping(t_address,t_array(t_uint32)dyn_storage)"
+      },
+      {
+        "astId": 334,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "managerForIndexes",
+        "offset": 0,
+        "slot": "14",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_uint256))"
+      },
+      {
+        "astId": 339,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "spawningFor",
+        "offset": 0,
+        "slot": "15",
+        "type": "t_mapping(t_address,t_array(t_uint32)dyn_storage)"
+      },
+      {
+        "astId": 345,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "spawningForIndexes",
+        "offset": 0,
+        "slot": "16",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_uint256))"
+      },
+      {
+        "astId": 350,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "votingFor",
+        "offset": 0,
+        "slot": "17",
+        "type": "t_mapping(t_address,t_array(t_uint32)dyn_storage)"
+      },
+      {
+        "astId": 356,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "votingForIndexes",
+        "offset": 0,
+        "slot": "18",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_uint256))"
+      },
+      {
+        "astId": 361,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "transferringFor",
+        "offset": 0,
+        "slot": "19",
+        "type": "t_mapping(t_address,t_array(t_uint32)dyn_storage)"
+      },
+      {
+        "astId": 367,
+        "contract": "Azimuth.sol:Azimuth",
+        "label": "transferringForIndexes",
+        "offset": 0,
+        "slot": "20",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_uint256))"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_string_storage)3_storage": {
+        "base": "t_string_storage",
+        "encoding": "inplace",
+        "label": "string[3]",
+        "numberOfBytes": "96"
+      },
+      "t_array(t_uint32)dyn_storage": {
+        "base": "t_uint32",
+        "encoding": "dynamic_array",
+        "label": "uint32[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_array(t_uint32)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint32[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_uint32)dyn_storage"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => bool))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_bool)"
+      },
+      "t_mapping(t_address,t_mapping(t_uint32,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(uint32 => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint32,t_uint256)"
+      },
+      "t_mapping(t_uint32,t_array(t_uint32)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => uint32[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_uint32)dyn_storage"
+      },
+      "t_mapping(t_uint32,t_mapping(t_uint32,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => mapping(uint32 => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint32,t_uint256)"
+      },
+      "t_mapping(t_uint32,t_struct(Deed)272_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => struct Azimuth.Deed)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Deed)272_storage"
+      },
+      "t_mapping(t_uint32,t_struct(Point)261_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => struct Azimuth.Point)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Point)261_storage"
+      },
+      "t_mapping(t_uint32,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Deed)272_storage": {
+        "encoding": "inplace",
+        "label": "struct Azimuth.Deed",
+        "members": [
+          {
+            "astId": 263,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "owner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 265,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "managementProxy",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 267,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "spawnProxy",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address"
+          },
+          {
+            "astId": 269,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "votingProxy",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_address"
+          },
+          {
+            "astId": 271,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "transferProxy",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address"
+          }
+        ],
+        "numberOfBytes": "160"
+      },
+      "t_struct(Point)261_storage": {
+        "encoding": "inplace",
+        "label": "struct Azimuth.Point",
+        "members": [
+          {
+            "astId": 239,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "encryptionKey",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 241,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "authenticationKey",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 244,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "spawned",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_array(t_uint32)dyn_storage"
+          },
+          {
+            "astId": 246,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "hasSponsor",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_bool"
+          },
+          {
+            "astId": 248,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "active",
+            "offset": 1,
+            "slot": "3",
+            "type": "t_bool"
+          },
+          {
+            "astId": 250,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "escapeRequested",
+            "offset": 2,
+            "slot": "3",
+            "type": "t_bool"
+          },
+          {
+            "astId": 252,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "sponsor",
+            "offset": 3,
+            "slot": "3",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 254,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "escapeRequestedTo",
+            "offset": 7,
+            "slot": "3",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 256,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "cryptoSuiteVersion",
+            "offset": 11,
+            "slot": "3",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 258,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "keyRevisionNumber",
+            "offset": 15,
+            "slot": "3",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 260,
+            "contract": "Azimuth.sol:Azimuth",
+            "label": "continuityNumber",
+            "offset": 19,
+            "slot": "3",
+            "type": "t_uint32"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  }
+}
