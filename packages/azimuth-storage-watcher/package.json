@@ -1,7 +1,7 @@
 {
-  "name": "@cerc-io/Azimuth-storage-watcher-test-flattener",
+  "name": "@cerc-io/azimuth-storage-watcher",
   "version": "0.1.0",
-  "description": "Azimuth-storage-watcher-test-flattener",
+  "description": "azimuth-storage-watcher",
   "private": true,
   "main": "dist/index.js",
   "scripts": {

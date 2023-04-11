@@ -40,7 +40,7 @@
   type = "postgres"
   host = "localhost"
   port = 5432
-  database = "Azimuth-storage-watcher-test-flattener"
+  database = "azimuth-storage-watcher"
   username = "postgres"
   password = "postgres"
   synchronize = true
@@ -57,7 +57,7 @@
     deleteOnStart = false
 
 [jobQueue]
-  dbConnectionString = "postgres://postgres:postgres@localhost/Azimuth-storage-watcher-test-flattener-job-queue"
+  dbConnectionString = "postgres://postgres:postgres@localhost/azimuth-storage-watcher-job-queue"
   maxCompletionLagInSecs = 300
   jobDelayInMilliSecs = 100
   eventsInBatch = 50

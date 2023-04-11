@@ -1,4 +1,4 @@
-# Azimuth-storage-watcher-test-flattener
+# azimuth-storage-watcher
 
 ## Setup
 
@@ -12,7 +12,7 @@
 
   ```bash
   sudo su - postgres
-  createdb Azimuth-storage-watcher-test-flattener
+  createdb azimuth-storage-watcher
   ```
 
 * If the watcher is an `active` watcher:
@@ -20,19 +20,19 @@
   Create database for the job queue and enable the `pgcrypto` extension on them (https://github.com/timgit/pg-boss/blob/master/docs/usage.md#intro):
 
   ```
-  createdb Azimuth-storage-watcher-test-flattener-job-queue
+  createdb azimuth-storage-watcher-job-queue
   ```
 
   ```
-  postgres@tesla:~$ psql -U postgres -h localhost Azimuth-storage-watcher-test-flattener-job-queue
+  postgres@tesla:~$ psql -U postgres -h localhost azimuth-storage-watcher-job-queue
   Password for user postgres:
   psql (12.7 (Ubuntu 12.7-1.pgdg18.04+1))
   SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
   Type "help" for help.
 
-  Azimuth-storage-watcher-test-flattener-job-queue=# CREATE EXTENSION pgcrypto;
+  azimuth-storage-watcher-job-queue=# CREATE EXTENSION pgcrypto;
   CREATE EXTENSION
-  Azimuth-storage-watcher-test-flattener-job-queue=# exit
+  azimuth-storage-watcher-job-queue=# exit
   ```
 
 * In the [config file](./environments/local.toml):

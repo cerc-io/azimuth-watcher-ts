@@ -1,8 +1,0 @@
-query getSyncStatus{
-    getSyncStatus{
-        latestIndexedBlockHash
-        latestIndexedBlockNumber
-        latestCanonicalBlockHash
-        latestCanonicalBlockNumber
-    }
-}
