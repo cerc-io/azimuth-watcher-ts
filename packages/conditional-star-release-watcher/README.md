@@ -1,5 +1,19 @@
 # conditional-star-release-watcher
 
+## Currently unsupported queries
+
+The watcher was generated in `eth_call` mode and does not support the following queries in its current state:
+
+* `getBatches(address _participant) returns (uint16[] batches)`
+
+* `getWithdrawn(address _participant) returns (uint16[] withdrawn)`
+
+* `getForfeited(address _participant) returns (bool[] forfeited)`
+
+* `getRemainingStars(address _participant) returns (uint16[] stars)`
+
+* `getConditionsState() returns (bytes32[] conds, uint256[] lives, uint256[] deads, uint256[] times)`
+
 ## Setup
 
 * Run the following command to install required packages:
