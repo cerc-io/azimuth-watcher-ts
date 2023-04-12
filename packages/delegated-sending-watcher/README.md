@@ -1,5 +1,15 @@
 # delegated-sending-watcher
 
+## Currently unsupported queries
+
+The watcher was generated in `eth_call` mode and does not support the following queries in its current state:
+
+* `getPoolStars(uint32 _who) returns (uint16[] stars)`
+
+* `getInviters() returns (uint32[] invs)`
+
+* `getInvited(uint32 _who) returns (uint32[] invd)`
+
 ## Setup
 
 * Run the following command to install required packages:
