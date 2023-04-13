@@ -10,6 +10,8 @@ The watcher was generated in `eth_call` mode and does not support the following 
 
 * `getInvited(uint32 _who) returns (uint32[] invd)`
 
+* `getPool(uint32 _point) returns (uint32 pool)`
+
 ## Setup
 
 * Run the following command to install required packages:

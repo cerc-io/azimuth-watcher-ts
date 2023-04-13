@@ -14,6 +14,8 @@ The watcher was generated in `eth_call` mode and does not support the following 
 
 * `getOwnedPoints(address _whose) returns (uint32[] ownedPoints)`
 
+* `getOwnedPointAtIndex(address _whose, uint256 _index) returns (uint32 point)`
+
 * `getManagerFor(address _proxy) returns (uint32[] mfor)`
 
 * `getSpawningFor(address _proxy) returns (uint32[] sfor)`
