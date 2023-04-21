@@ -193,9 +193,22 @@ type Query {
   getForfeited(blockHash: String!, contractAddress: String!, _participant: String!): ResultBooleanArray!
   hasForfeitedBatch(blockHash: String!, contractAddress: String!, _participant: String!, _batch: Int!): ResultBoolean!
   getRemainingStars(blockHash: String!, contractAddress: String!, _participant: String!): ResultIntArray!
+  getConditionsState(blockHash: String!, contractAddress: String!): ResultConditionStateType!
   getSyncStatus: SyncStatus
   getStateByCID(cid: String!): ResultState
   getState(blockHash: String!, contractAddress: String!, kind: String): ResultState
+}
+
+type ConditionStateType {
+  value0: [String!]!
+  value1: [BigInt!]!
+  value2: [BigInt!]!
+  value3: [BigInt!]!
+}
+
+type ResultConditionStateType {
+  value: ConditionStateType!
+  proof: Proof
 }
 
 type Mutation {

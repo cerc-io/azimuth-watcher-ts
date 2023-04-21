@@ -2062,6 +2062,30 @@ export class Indexer implements IndexerInterface {
     return result;
   }
 
+  async getConditionsState (blockHash: string, contractAddress: string): Promise<ValueResult> {
+    log('getConditionsState: db miss, fetching from upstream server');
+
+    const { block: { number } } = await this._ethClient.getBlockByHash(blockHash);
+    const blockNumber = ethers.BigNumber.from(number).toNumber();
+
+    const abi = this._abiMap.get(KIND_CONDITIONALSTARRELEASE);
+    assert(abi);
+
+    const contract = new ethers.Contract(contractAddress, abi, this._ethProvider);
+    const value = await contract.getConditionsState({ blockTag: blockHash });
+
+    const result: ValueResult = {
+      value: {
+        value0: value[0],
+        value1: value[1],
+        value2: value[2],
+        value3: value[3],
+      }
+    };
+
+    return result;
+  }
+
   async getStorageValue (storageLayout: StorageLayout, blockHash: string, contractAddress: string, variable: string, ...mappingKeys: MappingKey[]): Promise<ValueResult> {
     return this._baseIndexer.getStorageValue(
       storageLayout,
