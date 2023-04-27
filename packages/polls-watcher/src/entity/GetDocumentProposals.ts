@@ -19,8 +19,8 @@ export class GetDocumentProposals {
   @Column('varchar', { length: 42 })
     contractAddress!: string;
 
-  @Column('simple-array', { nullable: false })
-    value!: string[];
+  @Column('varchar', { array: true })
+    value!: string;
 
   @Column('text', { nullable: true })
     proof!: string;
