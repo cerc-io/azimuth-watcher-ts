@@ -23,7 +23,7 @@ export class GetRemainingStars {
     _participant!: string;
 
   @Column('integer', { array: true })
-    value!: number;
+    value!: number[];
 
   @Column('text', { nullable: true })
     proof!: string;

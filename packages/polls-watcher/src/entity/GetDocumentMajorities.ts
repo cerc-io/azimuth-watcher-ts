@@ -20,7 +20,7 @@ export class GetDocumentMajorities {
     contractAddress!: string;
 
   @Column('varchar', { array: true })
-    value!: string;
+    value!: string[];
 
   @Column('text', { nullable: true })
     proof!: string;
