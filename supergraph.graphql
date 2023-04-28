@@ -1,0 +1,699 @@
+schema
+  @link(url: "https://specs.apollo.dev/link/v1.0")
+  @link(url: "https://specs.apollo.dev/join/v0.3", for: EXECUTION)
+  @link(url: "https://specs.apollo.dev/inaccessible/v0.2", for: SECURITY)
+{
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @join__enumValue(graph: join__Graph!) repeatable on ENUM_VALUE
+
+directive @join__field(graph: join__Graph, requires: join__FieldSet, provides: join__FieldSet, type: String, external: Boolean, override: String, usedOverridden: Boolean) repeatable on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+directive @join__implements(graph: join__Graph!, interface: String!) repeatable on OBJECT | INTERFACE
+
+directive @join__type(graph: join__Graph!, key: join__FieldSet, extension: Boolean! = false, resolvable: Boolean! = true, isInterfaceObject: Boolean! = false) repeatable on OBJECT | INTERFACE | UNION | ENUM | INPUT_OBJECT | SCALAR
+
+directive @join__unionMember(graph: join__Graph!, member: String!) repeatable on UNION
+
+directive @link(url: String, as: String, for: link__Purpose, import: [link__Import]) repeatable on SCHEMA
+
+type _Block_
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  cid: String!
+  hash: String!
+  number: Int!
+  timestamp: Int!
+  parentHash: String!
+}
+
+type _Transaction_
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  hash: String!
+  index: Int!
+  from: String!
+  to: String!
+}
+
+type ActivatedEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+}
+
+type ApprovalEvent
+  @join__type(graph: ECLIPTIC)
+{
+  _owner: String!
+  _approved: String!
+  _tokenId: BigInt!
+}
+
+type ApprovalForAllEvent
+  @join__type(graph: ECLIPTIC)
+{
+  _owner: String!
+  _operator: String!
+  _approved: Boolean!
+}
+
+scalar BigDecimal
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+
+scalar BigInt
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+
+type BrokeContinuityEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  number: BigInt!
+}
+
+scalar Bytes
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+
+enum CacheControlScope
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  PUBLIC @join__enumValue(graph: AZIMUTH) @join__enumValue(graph: CENSURES) @join__enumValue(graph: CLAIMS) @join__enumValue(graph: CONDITIONAL_STAR_RELEASE) @join__enumValue(graph: DELEGATED_SENDING) @join__enumValue(graph: ECLIPTIC) @join__enumValue(graph: LINEAR_STAR_RELEASE) @join__enumValue(graph: POLLS)
+  PRIVATE @join__enumValue(graph: AZIMUTH) @join__enumValue(graph: CENSURES) @join__enumValue(graph: CLAIMS) @join__enumValue(graph: CONDITIONAL_STAR_RELEASE) @join__enumValue(graph: DELEGATED_SENDING) @join__enumValue(graph: ECLIPTIC) @join__enumValue(graph: LINEAR_STAR_RELEASE) @join__enumValue(graph: POLLS)
+}
+
+type CensuredEvent
+  @join__type(graph: CENSURES)
+{
+  by: Int!
+  who: BigInt!
+}
+
+type ChangedDnsEvent
+  @join__type(graph: AZIMUTH)
+{
+  primary: String!
+  secondary: String!
+  tertiary: String!
+}
+
+type ChangedKeysEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  encryptionKey: String!
+  authenticationKey: String!
+  cryptoSuiteVersion: BigInt!
+  keyRevisionNumber: BigInt!
+}
+
+type ChangedManagementProxyEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  managementProxy: String!
+}
+
+type ChangedSpawnProxyEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  spawnProxy: String!
+}
+
+type ChangedTransferProxyEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  transferProxy: String!
+}
+
+type ChangedVotingProxyEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  votingProxy: String!
+}
+
+type ClaimAddedEvent
+  @join__type(graph: CLAIMS)
+{
+  by: BigInt!
+  _protocol: String!
+  _claim: String!
+  _dossier: String!
+}
+
+type ClaimRemovedEvent
+  @join__type(graph: CLAIMS)
+{
+  by: BigInt!
+  _protocol: String!
+  _claim: String!
+}
+
+type ConditionCompletedEvent
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+{
+  condition: Int!
+  when: BigInt!
+}
+
+type DocumentMajorityEvent
+  @join__type(graph: POLLS)
+{
+  proposal: String!
+}
+
+type DocumentPollStartedEvent
+  @join__type(graph: POLLS)
+{
+  proposal: String!
+}
+
+type EscapeAcceptedEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  sponsor: BigInt!
+}
+
+type EscapeCanceledEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  sponsor: BigInt!
+}
+
+type EscapeRequestedEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  sponsor: BigInt!
+}
+
+union Event
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+  @join__unionMember(graph: AZIMUTH, member: "OwnerChangedEvent")
+  @join__unionMember(graph: AZIMUTH, member: "ActivatedEvent")
+  @join__unionMember(graph: AZIMUTH, member: "SpawnedEvent")
+  @join__unionMember(graph: AZIMUTH, member: "EscapeRequestedEvent")
+  @join__unionMember(graph: AZIMUTH, member: "EscapeCanceledEvent")
+  @join__unionMember(graph: AZIMUTH, member: "EscapeAcceptedEvent")
+  @join__unionMember(graph: AZIMUTH, member: "LostSponsorEvent")
+  @join__unionMember(graph: AZIMUTH, member: "ChangedKeysEvent")
+  @join__unionMember(graph: AZIMUTH, member: "BrokeContinuityEvent")
+  @join__unionMember(graph: AZIMUTH, member: "ChangedSpawnProxyEvent")
+  @join__unionMember(graph: AZIMUTH, member: "ChangedTransferProxyEvent")
+  @join__unionMember(graph: AZIMUTH, member: "ChangedManagementProxyEvent")
+  @join__unionMember(graph: AZIMUTH, member: "ChangedVotingProxyEvent")
+  @join__unionMember(graph: AZIMUTH, member: "ChangedDnsEvent")
+  @join__unionMember(graph: AZIMUTH, member: "OwnershipRenouncedEvent")
+  @join__unionMember(graph: CONDITIONAL_STAR_RELEASE, member: "OwnershipRenouncedEvent")
+  @join__unionMember(graph: ECLIPTIC, member: "OwnershipRenouncedEvent")
+  @join__unionMember(graph: LINEAR_STAR_RELEASE, member: "OwnershipRenouncedEvent")
+  @join__unionMember(graph: POLLS, member: "OwnershipRenouncedEvent")
+  @join__unionMember(graph: AZIMUTH, member: "OwnershipTransferredEvent")
+  @join__unionMember(graph: CONDITIONAL_STAR_RELEASE, member: "OwnershipTransferredEvent")
+  @join__unionMember(graph: ECLIPTIC, member: "OwnershipTransferredEvent")
+  @join__unionMember(graph: LINEAR_STAR_RELEASE, member: "OwnershipTransferredEvent")
+  @join__unionMember(graph: POLLS, member: "OwnershipTransferredEvent")
+  @join__unionMember(graph: CENSURES, member: "CensuredEvent")
+  @join__unionMember(graph: CENSURES, member: "ForgivenEvent")
+  @join__unionMember(graph: CLAIMS, member: "ClaimAddedEvent")
+  @join__unionMember(graph: CLAIMS, member: "ClaimRemovedEvent")
+  @join__unionMember(graph: CONDITIONAL_STAR_RELEASE, member: "ConditionCompletedEvent")
+  @join__unionMember(graph: CONDITIONAL_STAR_RELEASE, member: "ForfeitEvent")
+  @join__unionMember(graph: DELEGATED_SENDING, member: "SentEvent")
+  @join__unionMember(graph: ECLIPTIC, member: "TransferEvent")
+  @join__unionMember(graph: ECLIPTIC, member: "ApprovalEvent")
+  @join__unionMember(graph: ECLIPTIC, member: "ApprovalForAllEvent")
+  @join__unionMember(graph: ECLIPTIC, member: "UpgradedEvent")
+  @join__unionMember(graph: POLLS, member: "UpgradePollStartedEvent")
+  @join__unionMember(graph: POLLS, member: "DocumentPollStartedEvent")
+  @join__unionMember(graph: POLLS, member: "UpgradeMajorityEvent")
+  @join__unionMember(graph: POLLS, member: "DocumentMajorityEvent")
+ = OwnerChangedEvent | ActivatedEvent | SpawnedEvent | EscapeRequestedEvent | EscapeCanceledEvent | EscapeAcceptedEvent | LostSponsorEvent | ChangedKeysEvent | BrokeContinuityEvent | ChangedSpawnProxyEvent | ChangedTransferProxyEvent | ChangedManagementProxyEvent | ChangedVotingProxyEvent | ChangedDnsEvent | OwnershipRenouncedEvent | OwnershipTransferredEvent | CensuredEvent | ForgivenEvent | ClaimAddedEvent | ClaimRemovedEvent | ConditionCompletedEvent | ForfeitEvent | SentEvent | TransferEvent | ApprovalEvent | ApprovalForAllEvent | UpgradedEvent | UpgradePollStartedEvent | DocumentPollStartedEvent | UpgradeMajorityEvent | DocumentMajorityEvent
+
+type ForfeitEvent
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+{
+  who: String!
+  batch: Int!
+  stars: Int!
+}
+
+type ForgivenEvent
+  @join__type(graph: CENSURES)
+{
+  by: Int!
+  who: BigInt!
+}
+
+type GetConditionsStateType
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+{
+  value0: [String!]!
+  value1: [BigInt!]!
+  value2: [BigInt!]!
+  value3: [BigInt!]!
+}
+
+type GetKeysType
+  @join__type(graph: AZIMUTH)
+{
+  value0: String!
+  value1: String!
+  value2: BigInt!
+  value3: BigInt!
+}
+
+scalar join__FieldSet
+
+enum join__Graph {
+  AZIMUTH @join__graph(name: "azimuth", url: "http://localhost:3001/graphql")
+  CENSURES @join__graph(name: "censures", url: "http://localhost:3002/graphql")
+  CLAIMS @join__graph(name: "claims", url: "http://localhost:3003/graphql")
+  CONDITIONAL_STAR_RELEASE @join__graph(name: "conditional_star_release", url: "http://localhost:3004/graphql")
+  DELEGATED_SENDING @join__graph(name: "delegated_sending", url: "http://localhost:3005/graphql")
+  ECLIPTIC @join__graph(name: "ecliptic", url: "http://localhost:3006/graphql")
+  LINEAR_STAR_RELEASE @join__graph(name: "linear_star_release", url: "http://localhost:3007/graphql")
+  POLLS @join__graph(name: "polls", url: "http://localhost:3008/graphql")
+}
+
+scalar link__Import
+
+enum link__Purpose {
+  """
+  `SECURITY` features provide metadata necessary to securely resolve fields.
+  """
+  SECURITY
+
+  """
+  `EXECUTION` features provide metadata necessary for operation execution.
+  """
+  EXECUTION
+}
+
+type LostSponsorEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  sponsor: BigInt!
+}
+
+type Mutation
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  watchContract(address: String!, kind: String!, checkpoint: Boolean!, startingBlock: Int): Boolean!
+}
+
+type OwnerChangedEvent
+  @join__type(graph: AZIMUTH)
+{
+  point: BigInt!
+  owner: String!
+}
+
+type OwnershipRenouncedEvent
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  previousOwner: String!
+}
+
+type OwnershipTransferredEvent
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  previousOwner: String!
+  newOwner: String!
+}
+
+type Proof
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  data: String!
+}
+
+type Query
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  events(blockHash: String!, contractAddress: String!, name: String): [ResultEvent!]
+  eventsInRange(fromBlockNumber: Int!, toBlockNumber: Int!): [ResultEvent!]
+  isActive(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getKeys(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultGetKeysType! @join__field(graph: AZIMUTH)
+  getKeyRevisionNumber(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBigInt! @join__field(graph: AZIMUTH)
+  hasBeenLinked(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBoolean! @join__field(graph: AZIMUTH)
+  isLive(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getContinuityNumber(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getSpawnCount(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getSpawned(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBigIntArray! @join__field(graph: AZIMUTH)
+  hasSponsor(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getSponsor(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBigInt! @join__field(graph: AZIMUTH)
+  isSponsor(blockHash: String!, contractAddress: String!, _point: BigInt!, _sponsor: BigInt!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getSponsoringCount(blockHash: String!, contractAddress: String!, _sponsor: BigInt!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getSponsoring(blockHash: String!, contractAddress: String!, _sponsor: BigInt!): ResultBigIntArray! @join__field(graph: AZIMUTH)
+  isEscaping(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getEscapeRequest(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultBigInt! @join__field(graph: AZIMUTH)
+  isRequestingEscapeTo(blockHash: String!, contractAddress: String!, _point: BigInt!, _sponsor: BigInt!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getEscapeRequestsCount(blockHash: String!, contractAddress: String!, _sponsor: BigInt!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getEscapeRequests(blockHash: String!, contractAddress: String!, _sponsor: BigInt!): ResultBigIntArray! @join__field(graph: AZIMUTH)
+  getOwner(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultString! @join__field(graph: AZIMUTH)
+  isOwner(blockHash: String!, contractAddress: String!, _point: BigInt!, _address: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getOwnedPointCount(blockHash: String!, contractAddress: String!, _whose: String!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getOwnedPoints(blockHash: String!, contractAddress: String!, _whose: String!): ResultBigIntArray! @join__field(graph: AZIMUTH)
+  getOwnedPointAtIndex(blockHash: String!, contractAddress: String!, _whose: String!, _index: BigInt!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getManagementProxy(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultString! @join__field(graph: AZIMUTH)
+  isManagementProxy(blockHash: String!, contractAddress: String!, _point: BigInt!, _proxy: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  canManage(blockHash: String!, contractAddress: String!, _point: BigInt!, _who: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getManagerForCount(blockHash: String!, contractAddress: String!, _proxy: String!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getManagerFor(blockHash: String!, contractAddress: String!, _proxy: String!): ResultBigIntArray! @join__field(graph: AZIMUTH)
+  getSpawnProxy(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultString! @join__field(graph: AZIMUTH)
+  isSpawnProxy(blockHash: String!, contractAddress: String!, _point: BigInt!, _proxy: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  canSpawnAs(blockHash: String!, contractAddress: String!, _point: BigInt!, _who: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getSpawningForCount(blockHash: String!, contractAddress: String!, _proxy: String!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getSpawningFor(blockHash: String!, contractAddress: String!, _proxy: String!): ResultBigIntArray! @join__field(graph: AZIMUTH)
+  getVotingProxy(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultString! @join__field(graph: AZIMUTH)
+  isVotingProxy(blockHash: String!, contractAddress: String!, _point: BigInt!, _proxy: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  canVoteAs(blockHash: String!, contractAddress: String!, _point: BigInt!, _who: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getVotingForCount(blockHash: String!, contractAddress: String!, _proxy: String!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getVotingFor(blockHash: String!, contractAddress: String!, _proxy: String!): ResultBigIntArray! @join__field(graph: AZIMUTH)
+  getTransferProxy(blockHash: String!, contractAddress: String!, _point: BigInt!): ResultString! @join__field(graph: AZIMUTH)
+  isTransferProxy(blockHash: String!, contractAddress: String!, _point: BigInt!, _proxy: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  canTransfer(blockHash: String!, contractAddress: String!, _point: BigInt!, _who: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getTransferringForCount(blockHash: String!, contractAddress: String!, _proxy: String!): ResultBigInt! @join__field(graph: AZIMUTH)
+  getTransferringFor(blockHash: String!, contractAddress: String!, _proxy: String!): ResultBigIntArray! @join__field(graph: AZIMUTH)
+  isOperator(blockHash: String!, contractAddress: String!, _owner: String!, _operator: String!): ResultBoolean! @join__field(graph: AZIMUTH)
+  getSyncStatus: SyncStatus
+  getStateByCID(cid: String!): ResultState
+  getState(blockHash: String!, contractAddress: String!, kind: String): ResultState
+  getCensuringCount(blockHash: String!, contractAddress: String!, _whose: Int!): ResultBigInt! @join__field(graph: CENSURES)
+  getCensuring(blockHash: String!, contractAddress: String!, _whose: Int!): ResultBigIntArray! @join__field(graph: CENSURES)
+  getCensuredByCount(blockHash: String!, contractAddress: String!, _who: Int!): ResultBigInt! @join__field(graph: CENSURES)
+  getCensuredBy(blockHash: String!, contractAddress: String!, _who: Int!): ResultIntArray! @join__field(graph: CENSURES)
+  findClaim(blockHash: String!, contractAddress: String!, _whose: BigInt!, _protocol: String!, _claim: String!): ResultInt! @join__field(graph: CLAIMS)
+  withdrawLimit(blockHash: String!, contractAddress: String!, _participant: String!): ResultInt! @join__field(graph: CONDITIONAL_STAR_RELEASE) @join__field(graph: LINEAR_STAR_RELEASE)
+  verifyBalance(blockHash: String!, contractAddress: String!, _participant: String!): ResultBoolean! @join__field(graph: CONDITIONAL_STAR_RELEASE) @join__field(graph: LINEAR_STAR_RELEASE)
+  getBatches(blockHash: String!, contractAddress: String!, _participant: String!): ResultIntArray! @join__field(graph: CONDITIONAL_STAR_RELEASE)
+  getBatch(blockHash: String!, contractAddress: String!, _participant: String!, _batch: Int!): ResultInt! @join__field(graph: CONDITIONAL_STAR_RELEASE)
+  getWithdrawn(blockHash: String!, contractAddress: String!, _participant: String!): ResultIntArray! @join__field(graph: CONDITIONAL_STAR_RELEASE)
+  getWithdrawnFromBatch(blockHash: String!, contractAddress: String!, _participant: String!, _batch: Int!): ResultInt! @join__field(graph: CONDITIONAL_STAR_RELEASE)
+  getForfeited(blockHash: String!, contractAddress: String!, _participant: String!): ResultBooleanArray! @join__field(graph: CONDITIONAL_STAR_RELEASE)
+  hasForfeitedBatch(blockHash: String!, contractAddress: String!, _participant: String!, _batch: Int!): ResultBoolean! @join__field(graph: CONDITIONAL_STAR_RELEASE)
+  getRemainingStars(blockHash: String!, contractAddress: String!, _participant: String!): ResultIntArray! @join__field(graph: CONDITIONAL_STAR_RELEASE) @join__field(graph: LINEAR_STAR_RELEASE)
+  getConditionsState(blockHash: String!, contractAddress: String!): ResultGetConditionsStateType! @join__field(graph: CONDITIONAL_STAR_RELEASE)
+  canSend(blockHash: String!, contractAddress: String!, _as: BigInt!, _point: BigInt!): ResultBoolean! @join__field(graph: DELEGATED_SENDING)
+  canReceive(blockHash: String!, contractAddress: String!, _recipient: String!): ResultBoolean! @join__field(graph: DELEGATED_SENDING)
+  supportsInterface(blockHash: String!, contractAddress: String!, _interfaceId: String!): ResultBoolean! @join__field(graph: ECLIPTIC)
+  name(blockHash: String!, contractAddress: String!): ResultString! @join__field(graph: ECLIPTIC)
+  symbol(blockHash: String!, contractAddress: String!): ResultString! @join__field(graph: ECLIPTIC)
+  tokenURI(blockHash: String!, contractAddress: String!, _tokenId: BigInt!): ResultString! @join__field(graph: ECLIPTIC)
+  balanceOf(blockHash: String!, contractAddress: String!, _owner: String!): ResultBigInt! @join__field(graph: ECLIPTIC)
+  ownerOf(blockHash: String!, contractAddress: String!, _tokenId: BigInt!): ResultString! @join__field(graph: ECLIPTIC)
+  exists(blockHash: String!, contractAddress: String!, _tokenId: BigInt!): ResultBoolean! @join__field(graph: ECLIPTIC)
+  getApproved(blockHash: String!, contractAddress: String!, _tokenId: BigInt!): ResultString! @join__field(graph: ECLIPTIC)
+  isApprovedForAll(blockHash: String!, contractAddress: String!, _owner: String!, _operator: String!): ResultBoolean! @join__field(graph: ECLIPTIC)
+  getSpawnLimit(blockHash: String!, contractAddress: String!, _point: BigInt!, _time: BigInt!): ResultBigInt! @join__field(graph: ECLIPTIC)
+  canEscapeTo(blockHash: String!, contractAddress: String!, _point: BigInt!, _sponsor: BigInt!): ResultBoolean! @join__field(graph: ECLIPTIC)
+  getUpgradeProposals(blockHash: String!, contractAddress: String!): ResultStringArray! @join__field(graph: POLLS)
+  getUpgradeProposalCount(blockHash: String!, contractAddress: String!): ResultBigInt! @join__field(graph: POLLS)
+  getDocumentProposals(blockHash: String!, contractAddress: String!): ResultStringArray! @join__field(graph: POLLS)
+  getDocumentProposalCount(blockHash: String!, contractAddress: String!): ResultBigInt! @join__field(graph: POLLS)
+  getDocumentMajorities(blockHash: String!, contractAddress: String!): ResultStringArray! @join__field(graph: POLLS)
+  hasVotedOnUpgradePoll(blockHash: String!, contractAddress: String!, _galaxy: Int!, _proposal: String!): ResultBoolean! @join__field(graph: POLLS)
+  hasVotedOnDocumentPoll(blockHash: String!, contractAddress: String!, _galaxy: Int!, _proposal: String!): ResultBoolean! @join__field(graph: POLLS)
+}
+
+type ResultBigInt
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: POLLS)
+{
+  value: BigInt!
+  proof: Proof
+}
+
+type ResultBigIntArray
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+{
+  value: [BigInt!]!
+  proof: Proof
+}
+
+type ResultBoolean
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  value: Boolean!
+  proof: Proof
+}
+
+type ResultBooleanArray
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+{
+  value: [Boolean!]!
+  proof: Proof
+}
+
+type ResultEvent
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  block: _Block_!
+  tx: _Transaction_!
+  contract: String!
+  eventIndex: Int!
+  event: Event! @inaccessible
+  proof: Proof
+}
+
+type ResultGetConditionsStateType
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+{
+  value: GetConditionsStateType!
+  proof: Proof
+}
+
+type ResultGetKeysType
+  @join__type(graph: AZIMUTH)
+{
+  value: GetKeysType!
+  proof: Proof
+}
+
+type ResultInt
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+{
+  value: Int!
+  proof: Proof
+}
+
+type ResultIntArray
+  @join__type(graph: CENSURES)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+{
+  value: [Int!]!
+  proof: Proof
+}
+
+type ResultState
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  block: _Block_!
+  contractAddress: String!
+  cid: String!
+  kind: String!
+  data: String!
+}
+
+type ResultString
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: ECLIPTIC)
+{
+  value: String!
+  proof: Proof
+}
+
+type ResultStringArray
+  @join__type(graph: POLLS)
+{
+  value: [String!]!
+  proof: Proof
+}
+
+type SentEvent
+  @join__type(graph: DELEGATED_SENDING)
+{
+  prefix: Int!
+  fromPool: BigInt!
+  by: BigInt!
+  point: BigInt!
+  to: String!
+}
+
+type SpawnedEvent
+  @join__type(graph: AZIMUTH)
+{
+  prefix: BigInt!
+  child: BigInt!
+}
+
+type Subscription
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  onEvent: ResultEvent!
+}
+
+type SyncStatus
+  @join__type(graph: AZIMUTH)
+  @join__type(graph: CENSURES)
+  @join__type(graph: CLAIMS)
+  @join__type(graph: CONDITIONAL_STAR_RELEASE)
+  @join__type(graph: DELEGATED_SENDING)
+  @join__type(graph: ECLIPTIC)
+  @join__type(graph: LINEAR_STAR_RELEASE)
+  @join__type(graph: POLLS)
+{
+  latestIndexedBlockHash: String!
+  latestIndexedBlockNumber: Int!
+  latestCanonicalBlockHash: String!
+  latestCanonicalBlockNumber: Int!
+}
+
+type TransferEvent
+  @join__type(graph: ECLIPTIC)
+{
+  _from: String!
+  _to: String!
+  _tokenId: BigInt!
+}
+
+type UpgradedEvent
+  @join__type(graph: ECLIPTIC)
+{
+  to: String!
+}
+
+type UpgradeMajorityEvent
+  @join__type(graph: POLLS)
+{
+  proposal: String!
+}
+
+type UpgradePollStartedEvent
+  @join__type(graph: POLLS)
+{
+  proposal: String!
+}

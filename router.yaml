@@ -1,0 +1,10 @@
+sandbox:
+  enabled: true
+
+# Sandbox uses introspection to obtain your router's schema.
+supergraph:
+  introspection: true
+
+# Sandbox requires the default landing page to be disabled.
+homepage:
+  enabled: false
