@@ -3,55 +3,22 @@
 //
 
 import { createYoga } from 'graphql-yoga';
-import waitOn from 'wait-on';
+import isReachable from 'is-reachable';
 
 import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 import { stitchSchemas } from '@graphql-tools/stitch';
 import { RenameRootFields, schemaFromExecutor } from '@graphql-tools/wrap';
 
-const WATCHERS = [
-  {
-    prefix: 'azimuth',
-    port: 3001
-  },
-  {
-    prefix: 'censures',
-    port: 3002
-  },
-  {
-    prefix: 'claims',
-    port: 3003
-  },
-  {
-    prefix: 'conditionalStarRelease',
-    port: 3004
-  },
-  {
-    prefix: 'delegatedSending',
-    port: 3005
-  },
-  {
-    prefix: 'ecliptic',
-    port: 3006
-  },
-  {
-    prefix: 'linearStarRelease',
-    port: 3007
-  },
-  {
-    prefix: 'polls',
-    port: 3008
-  }
-];
+import watchers from './watchers.json'
 
 async function makeGatewaySchema() {
-  await waitOn({ resources: WATCHERS.map(watcher => `tcp:${watcher.port}`) });
+  await isReachable(watchers.map(watcher => watcher.endpoint));
 
-  const subSchemaPromises = WATCHERS.map(async watcher => {
+  const subSchemaPromises = watchers.map(async watcher => {
     // Make remote executors:
     // these are simple functions that query a remote GraphQL API for JSON.
     const remoteExecutor = buildHTTPExecutor({
-      endpoint: `http://localhost:${watcher.port}/graphql`
+      endpoint: watcher.endpoint
     })
 
     return {
