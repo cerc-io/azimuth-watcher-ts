@@ -12,22 +12,22 @@ import { RenameRootFields, schemaFromExecutor } from '@graphql-tools/wrap';
 import watchers from './watchers.json';
 
 async function makeGatewaySchema () {
+  // Check that watcher endpoints are reachable.
   await isReachable(watchers.map(watcher => watcher.endpoint));
 
   const subSchemaPromises = watchers.map(async watcher => {
-    // Make remote executors:
-    // these are simple functions that query a remote GraphQL API for JSON.
+    // Make remote executor:
+    // Simple function that queries a remote GraphQL API for JSON.
     const remoteExecutor = buildHTTPExecutor({
       endpoint: watcher.endpoint
     });
 
     return {
-      // Introspect a remote schema. Caveats:
-      // - Remote server must enable introspection.
-      // - Custom directives are not included in introspection.
+      // Introspect remote schema.
       schema: await schemaFromExecutor(remoteExecutor),
       executor: remoteExecutor,
       transforms: [
+        // Add prefix to queries, mutations and subscriptions
         new RenameRootFields(
           (op, name) => `${watcher.prefix}${name.charAt(0).toUpperCase()}${name.slice(1)}`
         )
