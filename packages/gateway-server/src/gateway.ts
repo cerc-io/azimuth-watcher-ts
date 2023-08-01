@@ -53,6 +53,7 @@ export const gatewayApp = createYoga({
   schema: makeGatewaySchema(),
   maskedErrors: false,
   graphiql: {
-    title: 'Azimuth Watchers'
+    title: 'Azimuth Watchers',
+    defaultQuery: '# Urbit smurbit'
   }
 });
