@@ -85,23 +85,19 @@ export class Indexer implements IndexerInterface {
     this._storageLayoutMap = new Map();
     this._contractMap = new Map();
     this.eventSignaturesMap = new Map();
-    let contractInterface: ethers.utils.Interface;
-    let eventSignatures: string[];
 
     const { abi: AzimuthABI } = AzimuthArtifacts;
 
     assert(AzimuthABI);
     this._abiMap.set(KIND_AZIMUTH, AzimuthABI);
 
-    //  eslint-disable-next-line  prefer-const
-    contractInterface = new ethers.utils.Interface(AzimuthABI);
-    this._contractMap.set(KIND_AZIMUTH, contractInterface);
+    const AzimuthContractInterface = new ethers.utils.Interface(AzimuthABI);
+    this._contractMap.set(KIND_AZIMUTH, AzimuthContractInterface);
 
-    //  eslint-disable-next-line  prefer-const
-    eventSignatures = Object.values(contractInterface.events).map(value => {
-      return contractInterface.getEventTopic(value);
+    const AzimuthEventSignatures = Object.values(AzimuthContractInterface.events).map(value => {
+      return AzimuthContractInterface.getEventTopic(value);
     });
-    this.eventSignaturesMap.set(KIND_AZIMUTH, eventSignatures);
+    this.eventSignaturesMap.set(KIND_AZIMUTH, AzimuthEventSignatures);
   }
 
   get serverConfig (): ServerConfig {
