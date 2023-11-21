@@ -3,13 +3,8 @@
 //
 
 import assert from 'assert';
-import BigInt from 'apollo-type-bigint';
 import debug from 'debug';
-import Decimal from 'decimal.js';
-import {
-  GraphQLScalarType,
-  GraphQLResolveInfo
-} from 'graphql';
+import { GraphQLResolveInfo } from 'graphql';
 
 import {
   ValueResult,
@@ -17,6 +12,8 @@ import {
   gqlQueryCount,
   getResultState,
   IndexerInterface,
+  GraphQLBigInt,
+  GraphQLBigDecimal,
   EventWatcher,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setGQLCacheHints
@@ -33,20 +30,9 @@ export const createResolvers = async (indexerArg: IndexerInterface, eventWatcher
   const gqlCacheConfig = indexer.serverConfig.gqlCache;
 
   return {
-    BigInt: new BigInt('bigInt'),
+    BigInt: GraphQLBigInt,
 
-    BigDecimal: new GraphQLScalarType({
-      name: 'BigDecimal',
-      description: 'BigDecimal custom scalar type',
-      parseValue (value) {
-        // value from the client
-        return new Decimal(value);
-      },
-      serialize (value: Decimal) {
-        // value sent to the client
-        return value.toFixed();
-      }
-    }),
+    BigDecimal: GraphQLBigDecimal,
 
     Event: {
       __resolveType: (obj: any) => {
