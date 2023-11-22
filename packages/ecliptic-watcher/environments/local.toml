@@ -12,14 +12,14 @@
 
   # Enable state creation
   # CAUTION: Disable only if state creation is not desired or can be filled subsequently
-  enableState = true
+  enableState = false
 
   # Max block range for which to return events in eventsInRange GQL query.
   # Use -1 for skipping check on block range.
   maxEventsBlockRange = 1000
 
   # Flag to specify whether RPC endpoint supports block hash as block tag parameter
-  rpcSupportsBlockHashParam = true
+  rpcSupportsBlockHashParam = false
 
   # GQL cache settings
   [server.gqlCache]
@@ -33,9 +33,9 @@
 
 [metrics]
   host = "127.0.0.1"
-  port = 9000
+  port = 9010
   [metrics.gql]
-    port = 9001
+    port = 9011
 
 [database]
   type = "postgres"
@@ -53,7 +53,7 @@
     rpcProviderEndpoint = "http://127.0.0.1:8081"
 
     # Boolean flag to specify if rpc-eth-client should be used for RPC endpoint instead of ipld-eth-client (ipld-eth-server GQL client)
-    rpcClient = false
+    rpcClient = true
 
     # Boolean flag to specify if rpcProviderEndpoint is an FEVM RPC endpoint
     isFEVM = false
@@ -61,7 +61,7 @@
     # Boolean flag to filter event logs by contracts
     filterLogsByAddresses = true
     # Boolean flag to filter event logs by topics
-    filterLogsByTopics = true
+    filterLogsByTopics = false
 
   [upstream.cache]
     name = "requests"
