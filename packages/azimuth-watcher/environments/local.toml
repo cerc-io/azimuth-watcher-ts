@@ -12,7 +12,7 @@
 
   # Enable state creation
   # CAUTION: Disable only if state creation is not desired or can be filled subsequently
-  enableState = true
+  enableState = false
 
   # Max block range for which to return events in eventsInRange GQL query.
   # Use -1 for skipping check on block range.
