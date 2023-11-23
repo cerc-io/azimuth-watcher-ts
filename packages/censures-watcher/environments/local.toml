@@ -1,6 +1,6 @@
 [server]
   host = "127.0.0.1"
-  port = 3009
+  port = 3002
   kind = "active"
   gqlPath = "/graphql"
 
@@ -33,9 +33,9 @@
 
 [metrics]
   host = "127.0.0.1"
-  port = 9000
+  port = 9002
   [metrics.gql]
-    port = 9001
+    port = 9003
 
 [database]
   type = "postgres"
