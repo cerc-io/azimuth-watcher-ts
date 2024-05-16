@@ -117,6 +117,12 @@ export class Indexer implements IndexerInterface {
     await this._baseIndexer.fetchStateStatus();
   }
 
+  switchClients ({ ethClient, ethProvider }: { ethClient: EthClient, ethProvider: BaseProvider }): void {
+    this._ethClient = ethClient;
+    this._ethProvider = ethProvider;
+    this._baseIndexer.switchClients({ ethClient, ethProvider });
+  }
+
   getResultEvent (event: Event): ResultEvent {
     return getResultEvent(event);
   }
