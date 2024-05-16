@@ -678,8 +678,8 @@ export class Indexer implements IndexerInterface {
     return this._baseIndexer.updateBlockProgress(block, lastProcessedEventIndex);
   }
 
-  async getAncestorAtDepth (blockHash: string, depth: number): Promise<string> {
-    return this._baseIndexer.getAncestorAtDepth(blockHash, depth);
+  async getAncestorAtHeight (blockHash: string, height: number): Promise<string> {
+    return this._baseIndexer.getAncestorAtHeight(blockHash, height);
   }
 
   async resetWatcherToBlock (blockNumber: number): Promise<void> {
@@ -730,5 +730,9 @@ export class Indexer implements IndexerInterface {
     } finally {
       await dbTx.release();
     }
+  }
+
+  async getFullTransactions (txHashList: string[]): Promise<EthFullTransaction[]> {
+    return this._baseIndexer.getFullTransactions(txHashList);
   }
 }
