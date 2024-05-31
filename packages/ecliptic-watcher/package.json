@@ -1,6 +1,6 @@
 {
   "name": "@cerc-io/ecliptic-watcher",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "ecliptic-watcher",
   "private": true,
   "main": "dist/index.js",
