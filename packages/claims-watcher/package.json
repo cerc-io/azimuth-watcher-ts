@@ -28,7 +28,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cerc-io/watcher-ts.git"
+    "url": "https://github.com/cerc-io/azimuth-watcher-ts",
+    "directory": "packages/claims-watcher"
   },
   "author": "",
   "license": "AGPL-3.0",
