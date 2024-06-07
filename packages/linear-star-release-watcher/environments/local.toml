@@ -39,9 +39,9 @@
 
 [metrics]
   host = "127.0.0.1"
-  port = 9000
+  port = 9012
   [metrics.gql]
-    port = 9001
+    port = 9013
 
 [database]
   type = "postgres"
@@ -61,7 +61,7 @@
     ]
 
     # Boolean flag to specify if rpc-eth-client should be used for RPC endpoint instead of ipld-eth-client (ipld-eth-server GQL client)
-    rpcClient = false
+    rpcClient = true
 
     # Boolean flag to specify if rpcProviderEndpoint is an FEVM RPC endpoint
     isFEVM = false
@@ -69,7 +69,7 @@
     # Boolean flag to filter event logs by contracts
     filterLogsByAddresses = true
     # Boolean flag to filter event logs by topics
-    filterLogsByTopics = true
+    filterLogsByTopics = false
 
   [upstream.cache]
     name = "requests"
