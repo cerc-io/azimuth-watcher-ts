@@ -1,0 +1,8 @@
+query batchData($blockHash: String!, $contractAddress: String!){
+    batchData(blockHash: $blockHash, contractAddress: $contractAddress){
+        value
+        proof{
+            data
+        }
+    }
+}

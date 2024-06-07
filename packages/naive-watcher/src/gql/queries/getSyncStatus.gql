@@ -1,0 +1,12 @@
+query getSyncStatus{
+    getSyncStatus{
+        latestIndexedBlockHash
+        latestIndexedBlockNumber
+        latestCanonicalBlockHash
+        latestCanonicalBlockNumber
+        initialIndexedBlockHash
+        initialIndexedBlockNumber
+        latestProcessedBlockHash
+        latestProcessedBlockNumber
+    }
+}

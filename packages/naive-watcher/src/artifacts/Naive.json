@@ -1,0 +1,15 @@
+{
+  "abi": [
+    {
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "Batch",
+      "type": "event"
+    }
+  ]
+}
