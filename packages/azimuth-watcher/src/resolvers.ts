@@ -1103,10 +1103,10 @@ export const createResolvers = async (
 
       eventsInRange: async (
         _: any,
-        { fromBlockNumber, toBlockNumber, type }: { fromBlockNumber: number, toBlockNumber: number, type: string },
+        { fromBlockNumber, toBlockNumber, name }: { fromBlockNumber: number, toBlockNumber: number, name: string },
         expressContext: ExpressContext
       ) => {
-        log('eventsInRange', fromBlockNumber, toBlockNumber, type);
+        log('eventsInRange', fromBlockNumber, toBlockNumber, name);
 
         return executeAndRecordMetrics(
           indexer,
@@ -1125,8 +1125,8 @@ export const createResolvers = async (
             }
 
             let events = await indexer.getEventsInRange(fromBlockNumber, toBlockNumber);
-            if (type) {
-              events = events.filter(event => event.eventName === type);
+            if (name) {
+              events = events.filter(event => event.eventName === name);
             }
 
             return events.map(event => indexer.getResultEvent(event));
